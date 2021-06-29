@@ -21,3 +21,11 @@
 └── package.json
 
 ```
+
+
+## editorconfig
+
+- vscode 适用editorConfig需要在插件市场下载插件**EditorConfig for VS Code**
+- webStorm无需下载插件,可直接使用EditorConfig配置
+
+![https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/51ca554c3b01470397de87ef0a92481d~tplv-k3u1fbpfcp-zoom-1.image](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/51ca554c3b01470397de87ef0a92481d~tplv-k3u1fbpfcp-zoom-1.image)

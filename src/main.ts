@@ -1,12 +1,12 @@
-import { createApp } from 'vue';
-import routes from '@/router/index';
-import store from '@/store/index';
-import ElementPlus from 'element-plus';
-import App from './App.vue';
-import 'element-plus/lib/theme-chalk/index.css';
+import { createApp } from 'vue'
+import routes from '@/router/index'
+import store from '@/store/index'
+import ElementPlus from 'element-plus'
+import App from './App.vue'
+import 'element-plus/lib/theme-chalk/index.css'
 
-const app = createApp(App);
+const app = createApp(App)
 
-app.use(routes).use(store).use(ElementPlus);
+app.use(routes).use(store).use(ElementPlus)
 
-app.mount('#app');
+app.mount('#app')

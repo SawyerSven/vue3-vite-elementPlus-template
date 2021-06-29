@@ -1,24 +1,24 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true,
+    es2021: true
   },
-  extends: ['plugin:vue/essential', 'airbnb-base'],
+  extends: ['plugin:vue/essential', 'airbnb-base', 'plugin:prettier/recommended'],
   parserOptions: {
     ecmaVersion: 12,
     parser: '@typescript-eslint/parser',
-    sourceType: 'module',
+    sourceType: 'module'
   },
   plugins: ['vue', '@typescript-eslint'],
   rules: {
-    'vue/no-multiple-template-root': ['off'],
+    'vue/no-multiple-template-root': ['off']
   },
   settings: {
     'import/resolver': {
       alias: {
         map: [['@', './src/']],
-        extensions: ['.ts', '.js', '.vue', 'json'],
-      },
-    },
-  },
-};
+        extensions: ['.ts', '.js', '.vue', 'json']
+      }
+    }
+  }
+}

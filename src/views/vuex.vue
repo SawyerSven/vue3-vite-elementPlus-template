@@ -1,5 +1,5 @@
 <template>
-  <div class='vuex'>vuex</div>
+  <div class="vuex">vuex</div>
 </template>
 
 <script lang="ts">
@@ -7,10 +7,8 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'Vuex',
-  components: {
-  }
+  components: {}
 })
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

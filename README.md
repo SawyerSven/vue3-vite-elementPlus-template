@@ -40,3 +40,9 @@
 
 ![prettier](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ba1f48fbd3bf441b90d58012270c867b~tplv-k3u1fbpfcp-zoom-1.image)
 
+### eslint
+
+- vscode 使用 ESLint 配置需要在插件市场下载**ESLint**
+- JetBrains系列编辑器无需下载插件,可直接使用 ESLint 配置
+
+![ESLint](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/61a7c36554da4b8ab889f8bfde0538cc~tplv-k3u1fbpfcp-zoom-1.image)

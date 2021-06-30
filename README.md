@@ -46,3 +46,25 @@
 - JetBrains系列编辑器无需下载插件,可直接使用 ESLint 配置
 
 ![ESLint](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/61a7c36554da4b8ab889f8bfde0538cc~tplv-k3u1fbpfcp-zoom-1.image)
+
+
+## 发开中
+
+### git提交
+
+git commit message 统一使用Angluar规范.
+
+使用了commitizen和commitlint规范commit message.
+
+提交commit message代码统一使用：
+
+```
+git cz
+
+```
+然后根据改动内容选择对应的type,scope和subject
+
+
+> commitlint验证commit message的格式，缺少subject或type会在commit-msg的hook处进行报错
+
+

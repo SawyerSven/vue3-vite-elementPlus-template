@@ -39,7 +39,7 @@ module.exports = {
     type: '确保本次提交遵循Angluar 规范!\n 选择你要提交的类型:',
     scope: '\n 选择一个scope(可选):',
     customScope: '请输入自定义的scope:',
-    subject: '填写简短精炼的变更描述(50个字符以内):\n',
+    subject: '填写简短精炼的变更描述(100个字符以内):\n',
     body: '填写更加详细的变更描述(可选)。使用"|"换行:\n',
     breaking: '列举非兼容性的重大变更(可选): \n',
     footer: '列举出所有变更的Issues closed(可选)。例如：#31,#34: \n',
@@ -53,7 +53,7 @@ module.exports = {
   skipQuestions: ['body', 'footer'],
 
   // subject长度限定
-  subjectLimit: 50,
+  subjectLimit: 100,
   breaklineChar: '|'
   // askforBreakingChangeFirst:true
 }

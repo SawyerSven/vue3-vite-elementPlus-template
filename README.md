@@ -64,7 +64,12 @@ git cz
 ```
 然后根据改动内容选择对应的type,scope和subject
 
-
 > commitlint验证commit message的格式，缺少subject或type会在commit-msg的hook处进行报错
+
+## CI/CD
+
+ 代码提交到gitee的**master**分支会自动构建
+
+
 
 

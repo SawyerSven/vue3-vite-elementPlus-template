@@ -9,4 +9,4 @@ services:
       - TZ=Asia/Shanghai
     container_name: vite-vue3-starter
     ports:
-      - '3000:80'
+      - '8000:80'

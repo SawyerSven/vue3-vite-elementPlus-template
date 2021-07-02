@@ -1,8 +1,5 @@
 <template>
   <div class="home">主页,CI测试</div>
-  <div>
-    测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试
-  </div>
   <img alt="Vue logo" src="~@/assets/logo.png" />
 </template>
 

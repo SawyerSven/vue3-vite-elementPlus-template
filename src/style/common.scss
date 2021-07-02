@@ -1,0 +1,17 @@
+@mixin flex($main-axis:flex-start,$cross-axis:flex-start,$direction:row,$wrap:nowrap) {
+  display: flex;
+  flex-flow: $direction $wrap;
+  justify-content: $main-axis;
+  align-items: $cross-axis;
+}
+
+@mixin inside-container{
+  width: 100%;
+  background: #fff;
+  min-height: 400px;
+  padding: 20px;
+}
+
+@mixin margin-top($value:0){
+  margin-top: $value;
+}

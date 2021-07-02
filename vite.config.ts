@@ -1,4 +1,6 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { defineConfig } from 'vite'
+// eslint-disable-next-line import/no-extraneous-dependencies
 import vue from '@vitejs/plugin-vue'
 
 import { resolve } from 'path'
@@ -16,6 +18,13 @@ export default defineConfig({
     port: 4000,
     open: true,
     cors: true
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: '@import "./src/style/common.scss";'
+      }
+    }
   }
   // 设置代理，根据我们项目实际情况配置
   // proxy: {

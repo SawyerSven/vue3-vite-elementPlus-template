@@ -1,15 +1,17 @@
 <template>
-  <div class="home">主页,CI测试</div>
-  <img alt="Vue logo" src="~@/assets/logo.png" />
+  <div class="container">
+    <ItemSwiperView></ItemSwiperView>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import ItemSwiperView from '@/components/item-swiper-view/index.vue'
 // import http from '@/common/axios/index'
 
 export default defineComponent({
   name: 'Home',
-  components: {},
+  components: { ItemSwiperView },
   setup() {
     // http
     //   .get('/users/XPoet')

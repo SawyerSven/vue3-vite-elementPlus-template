@@ -1,0 +1,170 @@
+<template>
+  <div ref="container" class="item-swiper-view-left">
+    <div
+      @mousedown="mouseDown"
+      @mouseup="mouseUp"
+      @mousemove="mouseMove"
+      class="img-list"
+      ref="moveBox"
+    >
+      <div class="image-content">
+        <img
+          :style="imageBaseWidthClass"
+          @click="changeActiveItem(item.id)"
+          :ref="`img-${item.id}`"
+          :draggable="false"
+          v-for="item in model"
+          :key="item.id"
+          :src="item.main"
+          alt=""
+        />
+      </div>
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import { computed, defineComponent, getCurrentInstance, onMounted, PropType, ref } from 'vue'
+
+interface LeftItem {
+  id: number
+  main: string
+}
+export default defineComponent({
+  name: 'ItemSwiperViewLeft',
+  components: {},
+  props: {
+    model: {
+      type: Array as PropType<LeftItem[]>,
+      default: () => []
+    },
+    // 显示{showCount}个元素
+    showCount: {
+      type: Number,
+      default: 4
+    }
+  },
+  setup(props) {
+    const currMovBoxTranslate = ref(0)
+    const activeImage = ref(0)
+    const instance = getCurrentInstance()
+    const wrapWidth = ref(0) // 容器宽度
+    const imageBaseWidth = computed(() => wrapWidth.value / props.showCount)
+    const activeItem = computed(() => <HTMLElement>instance?.refs[`img-${activeImage.value}`])
+    const imageBaseWidthClass = computed(() => ({ width: `${imageBaseWidth.value}px` }))
+    const isMouseDown = ref(false)
+    const mouseDownStartX = ref(0)
+    let mouseMoveDiff = 0
+
+    // 在当前激活元素之后的元素, 即需要处理样式的元素们
+    const getBehindItems = (isInit: Boolean = false) => {
+      // const frontItemsNumber = Object.keys(props.model as any).length - activeImage.value
+      // console.log(frontItemsNumber)
+      let willChangeNumber = activeImage.value - 1 // 当前激活元素左边第一个img
+      const active = activeItem.value
+      active.style.transform = ''
+      active.style.filter = ''
+      active.style.marginRight = ''
+      active.style.transition = isInit ? '' : 'all 1s linear'
+      while (willChangeNumber > 0) {
+        const diff = activeImage.value - willChangeNumber // 当前激活元素和即将被修改的元素的差值
+        const willChangeItem: HTMLElement = <HTMLElement>instance?.refs[`img-${willChangeNumber}`]
+        willChangeItem.style.transition = isInit ? '' : 'all 1s linear'
+        willChangeItem.style.transform = `scale(${1 - diff / 6})`
+        willChangeItem.style.filter = `blur(${diff * diff}px)`
+        willChangeItem.style.marginRight = `${-diff * 50}px`
+        willChangeNumber -= 1
+      }
+      // const currentItem = `img-${activeImage.value}`
+    }
+    // 移动
+    const moveToNext = (step: number = 1) => {
+      const moveBox = instance?.refs.moveBox as HTMLElement
+      moveBox.style.transition = `all 1s linear`
+      currMovBoxTranslate.value += imageBaseWidth.value * step
+      moveBox.style.transform = `translateX(${currMovBoxTranslate.value}px)`
+    }
+
+    const changeActiveItem = (id: number): void => {
+      const diff = activeImage.value - id
+      activeImage.value = id
+      getBehindItems()
+      moveToNext(diff)
+    }
+    // 向前进一步
+    const activeItemFoward = () => {
+      if (activeImage.value < props.model.length) {
+        changeActiveItem(activeImage.value + 1)
+      }
+    }
+    const activeItemBack = () => {
+      if (activeImage.value > 0) {
+        changeActiveItem(activeImage.value - 1)
+      }
+    }
+
+    const mouseMove = (e: any) => {
+      if (isMouseDown.value) {
+        mouseMoveDiff = e.screenX - mouseDownStartX.value
+      }
+    }
+
+    const mouseUp = () => {
+      isMouseDown.value = false
+      console.log(mouseMoveDiff)
+      if (mouseMoveDiff > 0) {
+        activeItemBack()
+      } else {
+        activeItemFoward()
+      }
+    }
+
+    const mouseDown = (e: any) => {
+      isMouseDown.value = true
+      mouseDownStartX.value = e.screenX
+    }
+
+    onMounted(() => {
+      activeImage.value = props.model[props.model.length - 1].id
+      wrapWidth.value = (instance?.refs?.container as HTMLElement).clientWidth
+      getBehindItems(true)
+    })
+    return {
+      activeImage,
+      changeActiveItem,
+      imageBaseWidthClass,
+      mouseMove,
+      isMouseDown,
+      mouseDown,
+      mouseUp
+    }
+  }
+})
+</script>
+
+<style lang="scss" scoped>
+.item-swiper-view-left {
+  width: 65%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  background: #f2f2f2;
+  .img-list {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    .image-content {
+      width: auto;
+      height: 800px;
+      padding: 40px;
+      white-space: nowrap;
+      overflow-y: hidden;
+      @include flex(flex-start, center);
+      img {
+        object-fit: none;
+      }
+    }
+  }
+}
+</style>

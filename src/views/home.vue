@@ -1,5 +1,5 @@
 <template>
-  <div class="home">home</div>
+  <div class="home">主页,CI测试</div>
 </template>
 
 <script lang="ts">

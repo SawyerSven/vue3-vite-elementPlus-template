@@ -89,6 +89,18 @@ export default defineComponent({
       }
       // const currentItem = `img-${props.activeImage}`
     }
+    // 处理当前激活元素之前的元素
+    const getFowardItem = () => {
+      let willChangeNumber = props.model.length - props.activeImage
+      while (willChangeNumber > 0) {
+        const willChangeItem: HTMLElement = <HTMLElement>(
+          instance?.refs[`img-${props.activeImage + 1}`]
+        )
+        willChangeItem.style.transition = 'all 1s linear'
+        willChangeItem.style.transform = `scale(${1.2})`
+        willChangeNumber -= 1
+      }
+    }
     // 移动
     const moveToNext = (step: number = 1) => {
       const moveBox = instance?.refs.moveBox as HTMLElement
@@ -102,6 +114,7 @@ export default defineComponent({
       ctx.emit('update:activeImage', id)
       setTimeout(() => {
         getBehindItems()
+        getFowardItem()
         moveToNext(diff)
       }, 30)
     }
@@ -138,6 +151,14 @@ export default defineComponent({
     }
 
     onMounted(() => {
+      window.addEventListener('keydown', (e) => {
+        if (e.code === 'ArrowLeft') {
+          activeItemBack()
+        }
+        if (e.code === 'ArrowRight') {
+          activeItemFoward()
+        }
+      })
       wrapWidth.value = (instance?.refs?.container as HTMLElement).clientWidth
       nextTick(() => {
         getBehindItems(true)

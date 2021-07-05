@@ -68,7 +68,7 @@ export default defineComponent({
   height: 800px;
   overflow: hidden;
   .item-swiper-box {
-    transition: transform ease-in 0.75s;
+    transition: transform ease-in-out 1s;
     .item {
       width: 300px;
       img {

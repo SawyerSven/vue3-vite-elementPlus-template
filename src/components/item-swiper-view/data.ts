@@ -42,6 +42,16 @@ const dataList: any[] = [
     id: 7,
     cover: [cover7, cover7],
     main: img7
+  },
+  {
+    id: 8,
+    cover: [cover4, cover4],
+    main: img4
+  },
+  {
+    id: 9,
+    cover: [cover5, cover5],
+    main: img5
   }
 ]
 

@@ -1,18 +1,79 @@
 <template>
-  <div class="item-swiper-view-right">ItemSwiperViewRight</div>
+  <div class="item-swiper-view-right">
+    <div ref="swiperBox" class="item-swiper-box">
+      <div v-for="item in displayList" :key="item.id" class="item">
+        <img :src="item.cover" alt="" />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { computed, defineComponent, getCurrentInstance, onMounted, PropType, watch } from 'vue'
 
+interface LeftItem {
+  id: number
+  cover: string
+}
 export default defineComponent({
   name: 'ItemSwiperViewRight',
-  components: {}
+  props: {
+    model: {
+      type: Array as PropType<LeftItem[]>,
+      default: () => []
+    },
+    activeImage: {
+      type: Number,
+      default: 0
+    }
+  },
+  setup(props) {
+    const instance = getCurrentInstance()
+    const displayList = computed(() => Array.from(props.model).reverse())
+    console.log(props.activeImage)
+
+    const activeChangeTranslateY = () => {
+      const diff = props.model.length - props.activeImage
+      return -(diff * 375)
+    }
+
+    const setListTransform = () => {
+      ;(
+        instance?.refs.swiperBox as HTMLElement
+      ).style.transform = `translate3d(0,${activeChangeTranslateY()}px,1px)`
+    }
+
+    watch(
+      () => props.activeImage,
+      () => {
+        setListTransform()
+      }
+    )
+
+    onMounted(() => {
+      setListTransform()
+    })
+
+    return { displayList, activeChangeTranslateY }
+  }
 })
 </script>
 
 <style lang="scss" scoped>
 .item-swiper-view-right {
   flex: 1;
+  margin-left: 10%;
+  height: 800px;
+  overflow: hidden;
+  .item-swiper-box {
+    transition: transform ease-in 0.75s;
+    .item {
+      width: 300px;
+      img {
+        width: 100%;
+        height: 375px;
+      }
+    }
+  }
 }
 </style>

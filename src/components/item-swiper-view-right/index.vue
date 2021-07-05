@@ -1,8 +1,10 @@
 <template>
   <div class="item-swiper-view-right">
     <div ref="swiperBox" class="item-swiper-box">
-      <div v-for="item in displayList" :key="item.id" class="item">
-        <img :src="item.cover" alt="" />
+      <div :ref="`item-${item.id}`" v-for="item in displayList" :key="item.id" class="item">
+        <div v-for="(cover, index) in item.cover" :key="index">
+          <img :src="cover" alt="" />
+        </div>
       </div>
     </div>
   </div>
@@ -13,7 +15,7 @@ import { computed, defineComponent, getCurrentInstance, onMounted, PropType, wat
 
 interface LeftItem {
   id: number
-  cover: string
+  cover: string[]
 }
 export default defineComponent({
   name: 'ItemSwiperViewRight',
@@ -34,7 +36,7 @@ export default defineComponent({
 
     const activeChangeTranslateY = () => {
       const diff = props.model.length - props.activeImage
-      return -(diff * 375)
+      return -(diff * (instance?.refs[`item-${props.activeImage}`] as HTMLElement).clientHeight)
     }
 
     const setListTransform = () => {

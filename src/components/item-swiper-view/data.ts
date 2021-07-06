@@ -1,11 +1,11 @@
 import cover4 from '@/assets/images/mj/short_1_cover.jpg'
-import img4 from '@/assets/images/mj/short_1.jpg'
+import img4 from '@/assets/images/mj/short_1.png'
 import cover5 from '@/assets/images/mj/short_2_cover.jpg'
-import img5 from '@/assets/images/mj/short_2.jpg'
+import img5 from '@/assets/images/mj/short_2.png'
 import cover6 from '@/assets/images/mj/short_3_cover.jpg'
-import img6 from '@/assets/images/mj/short_3.jpg'
+import img6 from '@/assets/images/mj/short_3.png'
 import cover7 from '@/assets/images/mj/short_4_cover.jpg'
-import img7 from '@/assets/images/mj/short_4.jpg'
+import img7 from '@/assets/images/mj/short_4.png'
 
 const dataList: any[] = [
   {

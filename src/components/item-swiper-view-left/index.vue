@@ -125,7 +125,7 @@ export default defineComponent({
       }
     }
     const activeItemBack = () => {
-      if (props.activeImage > 0) {
+      if (props.activeImage > 1) {
         changeActiveItem(props.activeImage - 1)
       }
     }

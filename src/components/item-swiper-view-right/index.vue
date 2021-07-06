@@ -32,8 +32,6 @@ export default defineComponent({
   setup(props) {
     const instance = getCurrentInstance()
     const displayList = computed(() => Array.from(props.model).reverse())
-    console.log(props.activeImage)
-
     const activeChangeTranslateY = () => {
       const diff = props.model.length - props.activeImage
       return -(diff * (instance?.refs[`item-${props.activeImage}`] as HTMLElement).clientHeight)

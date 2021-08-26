@@ -3591,3 +3591,8 @@ yocto-queue@^0.1.0:
   version "0.1.0"
   resolved "https://registry.nlark.com/yocto-queue/download/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha1-ApTrPe4FAo0x7hpfosVWpqrxChs=
+
+zepto@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.npm.taobao.org/zepto/download/zepto-1.2.0.tgz#e127bd9e66fd846be5eab48c1394882f7c0e4f98"
+  integrity sha1-4Se9nmb9hGvl6rSME5SIL3wOT5g=
